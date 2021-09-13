@@ -287,7 +287,7 @@ func LazyHandler(h Handler) Handler {
 		}
 
 		if hadErr {
-			r.Ctx = append(r.Ctx, errorKey, "bad lazy")
+			r.Ctx = append(r.Ctx, ErrorKey, "bad lazy")
 		}
 
 		return h.Log(r)

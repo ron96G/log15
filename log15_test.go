@@ -59,8 +59,8 @@ func TestInvalidLazy(t *testing.T) {
 			t.Fatalf("Invalid lazy, got %d args, expecting at least 4", len(r.Ctx))
 		}
 
-		if r.Ctx[2] != errorKey {
-			t.Fatalf("Invalid lazy, got key %s expecting %s", r.Ctx[2], errorKey)
+		if r.Ctx[2] != ErrorKey {
+			t.Fatalf("Invalid lazy, got key %s expecting %s", r.Ctx[2], ErrorKey)
 		}
 	}
 

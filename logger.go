@@ -8,10 +8,10 @@ import (
 	"github.com/go-stack/stack"
 )
 
-const timeKey = "t"
-const lvlKey = "level"
-const msgKey = "message"
-const errorKey = "LOG15_ERROR"
+const TimeKey = "time"
+const LvlKey = "level"
+const MsgKey = "message"
+const ErrorKey = "LOG15_ERROR"
 
 // Lvl is a type for predefined log levels.
 type Lvl int
@@ -116,9 +116,9 @@ func (l *logger) write(msg string, lvl Lvl, ctx []interface{}) {
 		Ctx:  newContext(l.ctx, ctx),
 		Call: stack.Caller(2),
 		KeyNames: RecordKeyNames{
-			Time: timeKey,
-			Msg:  msgKey,
-			Lvl:  lvlKey,
+			Time: TimeKey,
+			Msg:  MsgKey,
+			Lvl:  LvlKey,
 		},
 	})
 }
@@ -179,7 +179,7 @@ func normalize(ctx []interface{}) []interface{} {
 	// that things are the right length and users can fix bugs
 	// when they see the output looks wrong
 	if len(ctx)%2 != 0 {
-		ctx = append(ctx, nil, errorKey, "Normalized odd number of arguments by adding nil")
+		ctx = append(ctx, nil, ErrorKey, "Normalized odd number of arguments by adding nil")
 	}
 
 	return ctx

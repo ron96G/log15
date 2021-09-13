@@ -103,7 +103,7 @@ func logfmt(buf *bytes.Buffer, ctx []interface{}, color int) {
 		k, ok := ctx[i].(string)
 		v := formatLogfmtValue(ctx[i+1])
 		if !ok {
-			k, v = errorKey, formatLogfmtValue(k)
+			k, v = ErrorKey, formatLogfmtValue(k)
 		}
 
 		// XXX: we should probably check that all of your key bytes aren't invalid
@@ -146,7 +146,7 @@ func JsonFormatEx(pretty, lineSeparated bool) Format {
 		for i := 0; i < len(r.Ctx); i += 2 {
 			k, ok := r.Ctx[i].(string)
 			if !ok {
-				props[errorKey] = fmt.Sprintf("%+v is not a string key", r.Ctx[i])
+				props[ErrorKey] = fmt.Sprintf("%+v is not a string key", r.Ctx[i])
 			}
 			props[k] = formatJSONValue(r.Ctx[i+1])
 		}
@@ -154,7 +154,7 @@ func JsonFormatEx(pretty, lineSeparated bool) Format {
 		b, err := jsonMarshal(props)
 		if err != nil {
 			b, _ = jsonMarshal(map[string]string{
-				errorKey: err.Error(),
+				ErrorKey: err.Error(),
 			})
 			return b
 		}
