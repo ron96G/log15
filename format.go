@@ -14,8 +14,11 @@ import (
 var (
 	TimeFormat     = "2006-01-02T15:04:05-0700"
 	TermTimeFormat = "01-02|15:04:05"
-	floatFormat    = 'f'
-	termMsgJust    = 40
+)
+
+const (
+	floatFormat = 'f'
+	termMsgJust = 40
 )
 
 // Format  is the interface implemented by StreamHandler formatters.
