@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	timeFormat     = "2006-01-02T15:04:05-0700"
-	termTimeFormat = "01-02|15:04:05"
+	TimeFormat     = "2006-01-02T15:04:05-0700"
+	TermTimeFormat = "01-02|15:04:05"
 	floatFormat    = 'f'
 	termMsgJust    = 40
 )
@@ -64,9 +64,9 @@ func TerminalFormat() Format {
 		b := &bytes.Buffer{}
 		lvl := strings.ToUpper(r.Lvl.String())
 		if color > 0 {
-			fmt.Fprintf(b, "\x1b[%dm%s\x1b[0m[%s] %s ", color, lvl, r.Time.Format(termTimeFormat), r.Msg)
+			fmt.Fprintf(b, "\x1b[%dm%s\x1b[0m[%s] %s ", color, lvl, r.Time.Format(TermTimeFormat), r.Msg)
 		} else {
-			fmt.Fprintf(b, "[%s] [%s] %s ", lvl, r.Time.Format(termTimeFormat), r.Msg)
+			fmt.Fprintf(b, "[%s] [%s] %s ", lvl, r.Time.Format(TermTimeFormat), r.Msg)
 		}
 
 		// try to justify the log output for short messages
@@ -180,7 +180,7 @@ func formatShared(value interface{}) (result interface{}) {
 
 	switch v := value.(type) {
 	case time.Time:
-		return v.Format(timeFormat)
+		return v.Format(TimeFormat)
 
 	case error:
 		return v.Error()
@@ -216,7 +216,7 @@ func formatLogfmtValue(value interface{}) string {
 		// Performance optimization: No need for escaping since the provided
 		// timeFormat doesn't have any escape characters, and escaping is
 		// expensive.
-		return t.Format(timeFormat)
+		return t.Format(TimeFormat)
 	}
 	value = formatShared(value)
 	switch v := value.(type) {
