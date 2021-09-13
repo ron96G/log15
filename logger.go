@@ -8,9 +8,10 @@ import (
 	"github.com/go-stack/stack"
 )
 
-const TimeKey = "time"
-const LvlKey = "level"
-const MsgKey = "message"
+var TimeKey = "time"
+var LvlKey = "level"
+var MsgKey = "message"
+
 const ErrorKey = "LOG15_ERROR"
 
 // Lvl is a type for predefined log levels.
