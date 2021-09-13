@@ -7,9 +7,9 @@ var lvlCases = []struct {
 	out Lvl
 }{
 	{"warn", LvlWarn},
-	{"eror", LvlError},
 	{"error", LvlError},
-	{"EROR", LvlError},
+	{"error", LvlError},
+	{"error", LvlError},
 	{"ERROR", LvlError},
 	{"UNK", -1},
 }

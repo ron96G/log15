@@ -9,8 +9,8 @@ import (
 )
 
 const timeKey = "t"
-const lvlKey = "lvl"
-const msgKey = "msg"
+const lvlKey = "level"
+const msgKey = "message"
 const errorKey = "LOG15_ERROR"
 
 // Lvl is a type for predefined log levels.
@@ -35,7 +35,7 @@ func (l Lvl) String() string {
 	case LvlWarn:
 		return "warn"
 	case LvlError:
-		return "eror"
+		return "error"
 	case LvlCrit:
 		return "crit"
 	default:
@@ -53,7 +53,7 @@ func LvlFromString(lvlString string) (Lvl, error) {
 		return LvlInfo, nil
 	case "warn":
 		return LvlWarn, nil
-	case "error", "eror":
+	case "error", "error":
 		return LvlError, nil
 	case "crit":
 		return LvlCrit, nil
